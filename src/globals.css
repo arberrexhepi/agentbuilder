@@ -1,0 +1,7 @@
+@import url('@tailwindbase/base');
+import '@tailwindcss/components';
+import '@tailwindcss/utilities';
+// Add custom styles below
+head {
+  color: #FFF;
+}
