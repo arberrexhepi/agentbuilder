@@ -1,5 +1,4 @@
 import React from 'react';
-import ShadcnButton from './components/ShadcnButton';
 import Header from './components/Header';
 import TeamManagement from './components/TeamManagement';
 import FormWizard from './components/FormWizard';
