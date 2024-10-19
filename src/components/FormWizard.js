@@ -1,33 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import ShadcnButton from './ShadcnButton';
-import shadcnForm from 'snbs-styles/form';
+import React, { useState } from 'react';
+import { Form, FormField, FormLabel, FormControl, FormItem } from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
 
 function FormWizard() {
-  const [step, setStep] = useState(0);
-  const nextStep = () => setStep(step + 1);
-  const [formData, setFormData] = useState({ agentName: '', email: '', tasks: '', adapterType: 'Chat' });
+  const[formData, setFormData] = useState({
+    agentName: '',
+    email: '',
+    tasks: '',
+    adapterType: 'Chat'
+  });
 
-  const handleChange = (event) => { const { value, name } = event.target; setFormData(prev => ({...prev, [event.target.name: value})); };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-  return (
-    <div className="form-container bg-white vm-5">
-      <h2 className="form-title">Agent Configuration</h2>
-      <shadcnForm onSubmit={e => e.preventDefault()}>
-        <label html>Agent Name</label>
-        <input type="text" name="agentName" onValueChange={handleChange} value={formData.agentName} />
-        <label html>Adapter Type</label>
-        <select name="adapterType" onValueChange={handleChange} value={formData.adapterType}>
-          <option value="Chat1">Chat Model 1</option>
-          <option value="Rec0">REC Model 2</option>
-          <option value="Agent">Agent Mode</option>
-        </select>
-        <label html>Tasks</label>
-        <input type="text" name="tasks" onValueChange={handleChange} value={formData.tasks} />
-        <ShadcnButton type="submit">Submit</ShadcnButton>
-      <Button type="button" onSubmit={nextStep}>Next Step</Button>  
-      <Button type="button" onClick={() => alert('Configuration Saved!')}> Save Configuration</Button>
-    </div>
-  );
+  return (\n    <div className="form-container bg-white p-5">\n      <h2 className="form-title">Agent Configuration</h2>\n      <Form onSubmit={(e) => e.preventDefault()}>\n        <FormItem>\n          <FormLabel htmlFor="agentName">Agent Name</FormLabel>\n          <FormControl>\n            <input type=text name="agentName" value={formData.agentName} onChange={handleChange} />\n          </FormControl>\n        </FormItem>\n\n        <FormItem>\n          <FormLabel htmlFor="adapterType">Adapter Type</FormLabel>\n          <FormControl>\n            <select name="adapterType" value={formData.adapterType} onChange={handleChange}>\n              <option value="Chat1">Chat Model 1</option>\n              <option value="Rec0">REC Model 2</option>\n              <option value="Agent">Agent Mode</option>\n            </select>\n          </FormControl>\n        </FormItem>\n\n        <FormItem>\n          <FormLabel htmlFor="tasks">Tasks</FormLabel>\n          <FormControl>\n            <input type="text" name="tasks" value={formData.tasks} onChange={handleChange} />\n          </FormControl>\n        </FormItem>\n\n        <Button type=submit>Submit</Button>\n        <Button type="button" onClick={() => alert('Configuration Saved!')}> Save Configuration</Button>\n      </Form>\n    </div>\n  );
 }
 
 export default FormWizard;
