@@ -15,7 +15,7 @@ function TeamManagement() {
         <form onSubmit={e => e.preventDefault()}>
           <label htmlFor="name">Add Team Member</label>
           <input type="text" name="name" placeholder="Enter member name" value="" />
-          <ShadcnButton type="submit" onClick={addToTeam}>Add</ShadcnButton>
+          <Button type="submit" onClick={addToTeam}>Add</Button>
         </form>
       </div>
       <div className="team-list">
