@@ -1,7 +1,13 @@
 import React from 'react';
 import '@shadcn/button.css';
-export function ShadcnButton(props) {
+
+function ShadcnButton(props) {
   return (
-    <button className="shadcn-button" {...props} />
+    <button className='snb-button snb-button-ld snb-button-primary'
+            onClick={props.onClick}>
+      {props.children}
+    </button>
   );
 }
+
+export default ShadcnButton;
