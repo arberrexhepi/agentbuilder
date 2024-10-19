@@ -1,13 +1,9 @@
 import React from 'react';
-import '@shadcn/button.css';
+import { Button } from \"@/headers/ui/button\";
 
-function ShadcnButton(props) {
-  return (
-    <button className='snb-button snb-button-ld snb-button-primary'
-            onClick={props.onClick}>
-      {props.children}
-    </button>
-  );
+function ShadcnButton( { onClick, children }) {
+  return <Button onClick={onClick}>{children}</Button>;
 }
+
 
 export default ShadcnButton;
