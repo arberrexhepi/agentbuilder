@@ -1,6 +1,5 @@
 import React from 'react';
 import ShadcnButton from './components/ShadcnButton';
-import FormWithShadcn from './components/FormWithShadcn';
 import Header from './components/Header';
 import TeamManagement from './components/TeamManagement';
 import FormWizard from './components/FormWizard';
