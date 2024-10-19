@@ -15,7 +15,7 @@ function TeamManagement() {
         <form onSubmit={e => e.preventDefault()}>
           <label htmlFor="name">Add Team Member</label>
           <input type="text" name="name" placeholder="Enter member name" value="" />
-          <Button type="submit" onClick={addToTeam}>Add</Button>
+          <button type="submit" onClick={addToTeam}>Add</button>
         </form>
       </div>
       <div className="team-list">
