@@ -1,18 +1,20 @@
-# From the blueprint: package_config_blueprint.md
-# Production docker file for agentbuilder
+# Use the official Node.js image as the base image
+FROM node:current-alpine AS build
 
-# Step 1: Build stage
-FROM node:cluster as build
-ADD https://github.com/arberrexhepi/agentbuilder.git
-# Full run optimizer and create react running environment
-run yarn run build
+Workdir /app
 
-# Step 2: Optimize stage
-FROM build stage as init production container, with offline dependencies for logging
-# Add smaller image layer for lighter production config
-COPY --from=build /app /app
-add\nCONTAINER NVIRD run server.
+COPY package*.json ./
+# Install dependencies
+RUN npm install
 
-# Step 3: Production image serve commands with correct api call (avoid dev build)
+# Copy the rest of the application code
+COPY . .
+
+# Build the application
+RUN npm run build
+FROM  node:current-alpine AS production
+
 WORKDIR /app
-RUN node server index.js
+COPY --from=build /app /app
+EXPOSE 3000
+CMD ["npm","start"]
