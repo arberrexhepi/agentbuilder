@@ -4,7 +4,7 @@
   "description": "React project setup for agentbuilder",
   "scripts": {
     "start": "npm start",
-    "build": "npm run build",
+    "build": "npm run build --no-watch",
     "test": "npm test",
     "lint": "eslint index.js src/",
     "release": "npm run release",
