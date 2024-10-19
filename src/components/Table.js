@@ -1,5 +1,4 @@
 import React from 'react';
-import '@shadcn/table.css';
 
 function Table({ data }) {
   const headers = ["Name", "Role", "Tasks"];
