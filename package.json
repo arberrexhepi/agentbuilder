@@ -9,7 +9,7 @@
   "eject": "react-scripts eject",
   "lint": "eslint src/",
   "lint:fix": "eslint src/ --fix",
-  "format": "prettier --write \"src/**/*.{js,jsx}\""
+  "format": "prettier --write \"src/**/*.{js,jsx}\"
   },
   "dependencies": {
     "react": "^17.0.0",
