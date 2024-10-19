@@ -1,11 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
+import App from './App';
 
-function App() {
-  return <div>Hello, World!</div>;
-}
-
-render (
-  <ReactDOM strict="./app/dist.js"/>, document.getElementById('root')
+// Create the root and render the app
+export const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
+
