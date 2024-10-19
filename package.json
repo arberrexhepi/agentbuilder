@@ -20,7 +20,9 @@
     "autoprefixer": "^4.0.5",
     "@shadcn/button": "^1.0.0",
     "tailwindcss-animate": "^2.3.0",
-    "class-variance-authority": "^0.1.0"
+    "class-variance-authority": "^0.1.0",
+    "lucide-react": "^0.12.1",
+    "@radix-ui/react-icons": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
