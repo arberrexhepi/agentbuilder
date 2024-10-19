@@ -1,6 +1,5 @@
 import React from 'react';
-import '@shadcn/form.css';
-import '@shadcn/table.css';
+
 
 function DataList(){
   const data = [
