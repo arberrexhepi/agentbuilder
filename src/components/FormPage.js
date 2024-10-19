@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
+import { submitFormData } from '../state/mockBackend';
 
 function FormPage() {
   const[formData, setFormData] = useState({'name': '', 'email': ''});
+  const[message, setMessage] = useState('');
 
-  const handleInput = (event) => {
+const handleInput = (event) => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Submitted data: ', formData);
+    try {
+      const response = await submitFormData(formData);
+      setMessage(response.message);
+    } catch (err) {
+      setMessage(err.message);
+    }
   };
 
   return (
@@ -29,6 +36,7 @@ function FormPage() {
         </div>
         <button type='submit'>Submit</button>
       </form>
+      <p>{message}</p>
     </div>
   );
 }
