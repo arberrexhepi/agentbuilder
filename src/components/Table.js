@@ -1,28 +1,25 @@
 import React from 'react';
-import '../styles/global.css'; // global styles
+import '@shadcn/table.css';
 
-import ShadcnButton from './ShadcnButton';
+function Table({ data }) {
+  const headers = ["Name", "Role", "Tasks"];
 
-const Table = (props) => {
   return (
-    <table className="shadcn-table w-full">
-      <head>
-        <tr>
-          ${props.columns.map((col, index) => (
-            <th key={index} className="text-left text-smd bg-gray-800">{col</th>
-          ))}
-        </tr>
-      </head>
-      <tbody>
-        {props.rows.map((item, index) => (
-          <tr key={index}>
-            <td className="text-left text-smd bg-white">{item</td>
-          </tr>
-        ))}
+    <table className="snb-table w-full text-left snb-table-striped">
+      <thead>
+        <tr>  {
+            headers.map((header) => (<th key={header}> { header } { //th>))
+        }</tr>
+      </thead>
+      <tbody>  {
+            data.map((ow, index) => (<tr key={index}>; 
+            headers.map(header => (<td key={header}> { ow.[header] } </td>));
+            </tr>))
+        }
       </tbody>
-      <ShadcnButton className="text-center text-white p-4" onClick={props.onRefresh}>Refresh Table</ShadcnButton>
     </table>
+
   );
-};
+}
 
 export default Table;
