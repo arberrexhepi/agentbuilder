@@ -1,5 +1,4 @@
 import React from 'react';
-import '@shadcn/modal.css';
 
 function Modal({ isDisplayed, hide, children, onSubmit }) {
   return (
