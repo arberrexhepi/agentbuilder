@@ -1,44 +1,28 @@
 import React, { useState } from 'react';
-import { submitFormData } from '../state/mockBackend';
+import shadcn-form.css;
+import ShadcnButton from './ShadcnButton';
 
 function FormPage() {
-  const[formData, setFormData] = useState({'name': '', 'email': ''});
-  const[message, setMessage] = useState('');
+  const [formData, setFormData] = useState({ name: '', email: '' });
 
-const handleInput = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value
-    });
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await submitFormData(formData);
-      setMessage(response.message);
-    } catch (err) {
-      setMessage(err.message);
-    }
+  const handleChange = (ev) => {
+    const name = ev.target.value;
+    setFormData(prev => (.{...prev, name: name}));
   };
 
   return (
-    <div>
-      <h1>Form Submission</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='name'>Name</label>
-          <input type='text' name='name' value={formData.name} onChange={handleInput} />
-        </div>
-        <div>
-          <label htmlFor='email'>Email</label>
-          <input type='email' name='email' value={formData.email} onChange={handleInput} />
-        </div>
-        <button type='submit'>Submit</button>
+    <div className="form-container bg-white px-10">
+      <h2 className="form-title">Create new record</h2>
+      <form onSubmit={e => e.preventDefault()}>
+        <label html>Name</label>
+        <input type="text" name="name" onValueChange={handleChange} value={formData.name} />
+        <label html>Email</label>
+        <input type="email" name="email" onValueChange={handleChange} value={formData.email} />
+        <ShadcnButton type="submit">Submit</ShadcnButton>
       </form>
-      <p>{message}</p>
     </div>
   );
 }
+
 
 export default FormPage;
