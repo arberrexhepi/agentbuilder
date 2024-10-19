@@ -10,9 +10,6 @@ const App = () => {
       <h2>Agent Builder</h2>
       <FormWizard />
       <TeamManagement />
-      <ShadcnButton onClick={() => alert('Clicked Me!')}>
-        Click Me
-      </ShadcnButton>
     </div>
   );
 }
