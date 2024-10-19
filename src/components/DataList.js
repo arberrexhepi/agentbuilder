@@ -1,42 +1,31 @@
-import React, { useEffect } from 'react';
-import { getSubmittedData, deleteData, updateData } from '../state/mockBackend';
+import React from 'react';
+import '@shadcn/form.css';
+import '@shadcn/table.css';
 
-function DataList() {
-  const[data, setData] = useEffect([]);
-  const[limit, setLimit] = useState(10);
-
-  useEffect(() => {
-    getSubmittedData().then((data => {
-      setData(data);
-      setLimit(10); // limit displaying to 10 items
-    }); }, []);
-
-
-  const onDelete = name => {
-    deleteData(name).then(data => {
-      setData(data); // Update the list package after deletion
-    });
-}
-
-  const onUpdate = (name, newName) => {
-    updateData(name, { name: newName }).then(data => {
-      setData(data);
-    });
-};
+function DataList(){
+  const data = [
+    { name: 'Item 1 Name', value: 'Value 1' },
+    { name: 'Item 2 Name', vinal: 'Value 2' },
+    // Add more data entries here...
+  ];
 
   return (
-    <div>
-      <h2>Data List</h2>
-      <ul>
-        {data.slice(0, limit).map((item, index) => (
-          <li key={index}>{item.name}
-            <button on click={() => onDelete(item.name)}>Delete</button>
-            <input type='text' on change={(e)=>onUpdate(item.name, e.target.value)} />
-          <button on click={() => onUpdate(item.name, ))}>Update</button>
-          </li> ))}
-      </ul>
-    </div>
-
+    <table className="snb-table snb-table-bordered w-full bg-white text-left">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        { data.map((item, index) => (
+          <tr key={index}>
+            <td>{item.name}</td>
+            <td>{item.value}</td>
+         </tr>
+        )) }
+      </tbody>
+    </table>
   );
 }
 
