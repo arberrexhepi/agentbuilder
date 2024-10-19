@@ -12,7 +12,9 @@ const App = () => {
       <h2>Agent Builder</h2>
       <FormWizard />
       <TeamManagement />
-      <ShadcnButton children="Click Me" onClick={() => alert('Clicked Ma'))} />
+      <ShadcnButton onClick={() => alert('Clicked Me!')}>
+        Click Me
+      </ShadcnButton>
     </div>
   );
 };
