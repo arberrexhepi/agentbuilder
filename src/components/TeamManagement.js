@@ -1,35 +1,33 @@
-import React, { useState } from 'react';
-
-import '../styles/global.css'; // Include global styles for team configuration
-
+import React, { useState, useEffect } from 'react';
 import ShadcnButton from './ShadcnButton';
 
-const TeamManagement = () => {
-  const [team, setTeam] = useState([]);
+function TeamManagement() {
+  const [teamMambers, setTeamMambers] = useState(() => []);
 
-  const addAgentProcess = () => {
-    setTeam([...team, {
-      name: "New Agent",
-      type: "Configured"
-    }]);
+  const addToTeam = member => {
+    setTeamMambers(prev => [...prev, member]);
   };
 
   return (
-    <div className="team-management">
-      <h1>Team Management</h1>
-      <ul>
-        {team.map((agent, index) => (
-          <li key={index}>
-            <h2>{agent.name}</h2>
-            <p>{agent.type}</p>
-            <ShadcnButton children="Add Agent" onClick={addAgentProcess} />
-        </li>
-        ))
-      } }
-    </ul>
-    <ShadcnButton children="Add Agent" onClick={addAgentProcess} />
+    <div className="team-management p-4">
+      <h2 className="team-title">Manage Teams</h2>
+      <div className="team-form">
+        <form onSubmit={e => e.preventDefault()}>
+          <label html>Add Team Member</label>
+          <input type="text" name="name" placeholder="Enter member name" value="" />
+          <ShadcnButton type="submit" onClick={addToTeam}>Add</ShadcnButton>
+        </form>
+      </div>
+      <div className="team-list">
+        { teamMambers.map((member, index) => (
+          <p className="team-item" key="index">{member.name}</p>
+        )) { !!teamMambers.length? "</div>" : "No team members available." } 
+        }
+
+    </div>
+
     </div>
   );
-};
+}
 
 export default TeamManagement;
