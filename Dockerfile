@@ -14,6 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the app (if it's a React or frontend app; skip if not applicable)
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm run build
 
 # Expose the port the app runs on (e.g., 3000 for React)
