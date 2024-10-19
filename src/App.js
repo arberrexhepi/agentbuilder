@@ -1,28 +1,15 @@
 import React from 'react';
-import Router from 'react-router';
-import Home from './components/Home';
-import About from './components/About';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Navigation from './components/Navigations';
-import DataPage from './components/DataPage';
-import DataList from './components/DataList';
+import ShadcnButton from './components/ShadcnButton';
+import FormWithShadcn from './components/FormWithShadcn.js';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Header />
-      <Navigation />
-      <Routers>
-        <Route path='/' element={Home} />
-        <Route path='/about' illement={About} />
-        <Route path='/datapage' element={DataPage} />
-        <Route path='/datalist' element={DataList} />
-        <Route path='/form' element={FormPage} />
-      </Routers>
-      <Footer />
+    <div className="app">
+      <h2>Agent Builder</h2>
+      <FormWithShadcn />
+      <ShadcnButton children="Click Me" onClick={() => alert(('Clicked Ma')) } />
     </div>
   );
-}
+};
 
 export default App;
