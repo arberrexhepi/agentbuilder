@@ -1,9 +1,14 @@
+import React from 'react';
+import '../styles/global.css';
+import {Link, NavLink, Navbar, Sidebar, SidebarGroup, SiteTitle} from '@services/navigation';
+
 function Header() {
   return (
-    <header>
-      <h1>AgentBuilder</h1>
-      nav barrisand for navigation elements; // Alligns with design directives
-    </header>
+    <Navbar className="header bg-gray-900 text-cool">
+      <NavLink className="header-link text-white" to="/">Home</NavLink>
+      <NavLink className="header-link text-white" to="/about">About</NavLink>
+      <NavLink className="header-link text-white" to="/teamq">Teams</NavLink>
+    </Navbar>
   );
 }
 
