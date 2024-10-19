@@ -1,39 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import ShadcnButton from './ShadcnButton';
+import shadcnForm from 'snbs-styles/form';
 
 function FormWizard() {
   const [step, setStep] = useState(0);
-  const [name, setName] = useState('');
-  const [adapterType, setAdapterType] = useState('Chat1');
-  const [description, setDescription] = useState('');
+  const nextStep = () => setStep(step + 1);
+  const [formData, setFormData] = useState({ agentName: '', email: '', tasks: '', adapterType: 'Chat' });
 
-const handleChange = (ev) => { const { name, value } = ev.target; setName(value); };
-
-  const nextStep = () => {
-    setStep(step + 1);
-  };
+  const handleChange = (event) => { const { value, name } = event.target; setFormData(prev => ({...prev, [event.target.name: value})); };
 
   return (
-    <div className="form-container bg-white px-10">
-      <h2 className="form-title">Configure Your Agent</h2>
-      <form onSubmit={e => e.preventDefault();}>
+    <div className="form-container bg-white vm-5">
+      <h2 className="form-title">Agent Configuration</h2>
+      <shadcnForm onSubmit={e => e.preventDefault()}>
         <label html>Agent Name</label>
-        <input type="text" value={name} onChange={handleChange} />
+        <input type="text" name="agentName" onValueChange={handleChange} value={formData.agentName} />
         <label html>Adapter Type</label>
-        <select name="adapterType" value={adapterType} onChange={handleChange}>
+        <select name="adapterType" onValueChange={handleChange} value={formData.adapterType}>
           <option value="Chat1">Chat Model 1</option>
           <option value="Rec0">REC Model 2</option>
           <option value="Agent">Agent Mode</option>
         </select>
-        <label html>Description</label>
-        <input type="text" value={description} onChange={handleChange} />
+        <label html>Tasks</label>
+        <input type="text" name="tasks" onValueChange={handleChange} value={formData.tasks} />
         <ShadcnButton type="submit">Submit</ShadcnButton>
-      </form>
-      <ShadcnButton type="button" onClick={nextStep}>Next Step</ShadcnButton>
+      <Button type="button" onSubmit={nextStep}>Next Step</Button>  
+      <Button type="button" onClick={() => alert('Configuration Saved!')}> Save Configuration</Button>
     </div>
-
   );
 }
-
 
 export default FormWizard;
