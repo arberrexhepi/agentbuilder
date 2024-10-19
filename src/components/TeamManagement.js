@@ -1,11 +1,18 @@
-
 import React, { useState } from 'react';
 
 function TeamManagement() {
-  const [teamMambers, setTeamMambers] = useState([]);
+  const [teamMembers, setTeamMembers] = useState([]);
+  const[newMember, setNewMember] = useState("");
 
-  const addToTeam = member => {
-    setTeamMambers(prev => [...prev, member]);
+  const addToTeam = () => {
+    if (newMember) {
+      setTeamMembers(prev => [...prev, { name: newMember }]);
+      setNewMember(""); // Clear the input after adding the member
+    }
+  };
+
+  const handleInputChange = (event) => {
+    setNewMember(event.target.value); // Update the state on input change
   };
 
   return (
@@ -13,21 +20,24 @@ function TeamManagement() {
       <h2 className="team-title">Manage Teams</h2>
       <div className="team-form">
         <form onSubmit={e => e.preventDefault()}>
-          <label htmlFor="name">Add Team Member</label>
-          <input type="text" name="name" placeholder="Enter member name" value="" />
-          <button type="submit" onClick={addToTeam}>Add</button>
+          <label html="name">Add Team Member</label>
+          <input type="text" name="name" placeholder="Enter member name" value={newMember} onChange={handleInputChange} // Ensure the input is controlled
+          >
+          <button type="button" on Click={addToTeam}>Add</button>
         </form>
       </div>
       <div className="team-list">
-        {teamMambers.length > 0 ? (
-          teamMambers.map((member, index) => (
-            <p className="team-item" key={index}>{member.name}</p>
+        {teamMembers.length > 0 ? (
+          teamMembers.map(member, (index) => (
+            <p key={index}>{member.name}</p>
           ))
         ) : (
           <p>No team members available.</p>
         )}
       </div>
+
     </div>
+
   );
 }
 
