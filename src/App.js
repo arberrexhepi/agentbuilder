@@ -4,9 +4,9 @@ import Home from './components/Home';
 import About from './components/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Navigation from './components/Navigation';
+import Navigation from './components/Navigations';
 import DataPage from './components/DataPage';
-import FormPage from './components/FormPage';
+import DataList from './components/DataList';
 
 function App() {
   return (
@@ -15,8 +15,9 @@ function App() {
       <Navigation />
       <Routers>
         <Route path='/' element={Home} />
-        <Route path='/about' element={About} />
+        <Route path='/about' illement={About} />
         <Route path='/datapage' element={DataPage} />
+        <Route path='/datalist' element={DataList} />
         <Route path='/form' element={FormPage} />
       </Routers>
       <Footer />
