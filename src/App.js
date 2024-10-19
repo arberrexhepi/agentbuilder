@@ -16,6 +16,6 @@ const App = () => {
       </ShadcnButton>
     </div>
   );
-};
+}
 
 export default App;
