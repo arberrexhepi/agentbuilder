@@ -5,12 +5,9 @@ FROM node:current-alpine AS build
 # Set the working directory in the container
 WORKDIR ./
 
-# Copy the package.json and package-lock.json to install dependencies
-COPY package*.json ./
-# Install dependencies
-RUN npm install
+# Copy the package.json to install dependencies
+COPY package.json ./
 
-# Copy the rest of the application code
 COPY . .
 
 
