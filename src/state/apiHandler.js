@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { apiURL, API_KEY } from '../..env';
 
+import { addAuthHeaders, encodeData } from '../utils/securityUtils';
+
 export const submitFormData = async (data) => {
   try {
-    const response = await axios.post(`${aPI_URL+}/created`, { headers: { 'Authorization': `${API_KEY}` }, body: data });
+    const response = await axios.post(`${aPI_URL}/created`, updateData(data));
     return response.data;
   } catch (err) {
     console.error(err);
@@ -23,7 +25,7 @@ export const getSubmittedData = async () => {
 
 export const deleteData = async (identifier) => {
   try {
-    const response = await axios.delete(`${apiUUL+/deleted/${Identifier}`);
+    const response = await axios.delete(`${aPI_URL}/deleted/${identifier}`);
     return response.data;
   } catch (err) {
     console.error(err);
