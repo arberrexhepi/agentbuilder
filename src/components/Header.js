@@ -1,14 +1,22 @@
+
 import React from 'react';
-import '../styles/global.css';
-import {Link, NavLink, Navbar, Sidebar, SidebarGroup, SiteTitle} from '@services/navigation';
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuLink } from '@/components/ui/navigation-menu';
 
 function Header() {
   return (
-    <Navbar className="header bg-gray-900 text-cool">
-      <NavLink className="header-link text-white" to="/">Home</NavLink>
-      <NavLink className="header-link text-white" to="/about">About</NavLink>
-      <NavLink className="header-link text-white" to="/teamq">Teams</NavLink>
-    </Navbar>
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink href='/'>Home</NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink href='/about'>About</NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink href='/teams'>Teams</NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 }
 
